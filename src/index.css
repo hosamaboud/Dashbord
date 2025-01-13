@@ -75,9 +75,9 @@
 .dark .sun {
   display: block;
 }
-
+/* responsive */
 @media screen and (max-width: 500px) {
   .container{
-    padding: 0 0.5rem;
+    padding:0;
   }
 }

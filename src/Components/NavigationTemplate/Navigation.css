@@ -1,0 +1,133 @@
+.navigation {
+  position: sticky;
+  width: 4rem;
+  top: 0;
+  left: 0;
+  color: var(--text-color);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-navigation);
+  overflow: hidden;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+
+.navigation.open_nav header .name {
+  font-family: "Raleway", serif;
+}
+.navigation.open_nav {
+  position: fixed;
+  z-index: 200;
+  width: 12rem;
+  height: 100vh;
+  transition: all 0.4s ease;
+}
+.navigation .menu {
+  display: flex;
+  margin-top: 0.5rem;
+  position: relative;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: var(--bg-item);
+  padding: 0.2rem;
+  border-radius: 1rem;
+  transition: all 0.4s ease;
+}
+
+.navigation.open_nav .menu {
+  position: absolute;
+  top: 1%;
+  right: 2%;
+  z-index: 1;
+  background: var(--text-placeholder);
+}
+
+.menu_icon {
+  transition: transform 0.3s ease;
+}
+.menu_icon.open:hover {
+  transform: translateX(5px);
+}
+.menu_icon:hover.close {
+  transform: scale(1.1);
+}
+.navigation header {
+  background: transparent;
+  padding: 0;
+  margin-top: 10px;
+}
+.navigation header span,
+.navigation header::after {
+  display: none;
+  transition: opacity 0.3s ease;
+}
+.navigation.open_nav header {
+  position: relative;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--bg-item);
+  border-radius: 1rem;
+  transition: opacity 0.3s ease;
+}
+
+.navigation header .profile,
+.navigation.open_nav header .profile {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 4px solid var(--text-placeholder);
+}
+.navigation.open_nav header .profile {
+  height: 50px;
+}
+.navigation header .profile {
+  height: 40px;
+}
+.profile img {
+  height: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.navigation.open_nav header span {
+  display: block;
+  font-size: 15px;
+}
+.navigation .divider {
+  position: relative;
+  height: 1px;
+  width: 80%;
+  margin: 0 auto;
+  background-color: var(--text-color);
+}
+.navigation.open_nav .bg_wave {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.3;
+}
+.navigation .bg_wave {
+  display: none;
+}
+
+/* =============== navigation style end ================ */
+
+/* =============== navigation style for responsive start ================ */
+
+
+
+@media screen and (max-width: 500px) {
+.navigation header .profile {
+  height: 30px;
+}
+}

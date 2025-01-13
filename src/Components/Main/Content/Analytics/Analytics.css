@@ -1,0 +1,56 @@
+.analytics {
+  position: relative;
+  z-index: 1;
+}
+
+.analytics header {
+  position: relative;
+  display: flex;
+  font-weight: bold;
+  justify-content: space-between;
+  width: 100%;
+}
+.analytics header .earnings,
+.analytics header .followers {
+  color: var(--text-card);
+}
+.analytics .card {
+  border: none;
+}
+.analytics .title {
+  color: var(--text-color);
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.analytics .subtitle {
+  color: var(--text-placeholder);
+  font-size: 16px;
+}
+.analytics .value {
+  color: var(--text-card);
+  font-size: 30px;
+}
+.analytics .image {
+  height: 150px;
+}
+
+@media screen and (max-width: 680px) {
+   .pie_chart_container {
+    width: 270px !important;
+  }
+   .analytics .image {
+    height: 130px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .pie_chart_container {
+    width: 250px !important;
+  }
+  .analytics .subtitle {
+    font-size: 14px;
+  }
+  .analytics .image {
+    height: 105px;
+  }
+}

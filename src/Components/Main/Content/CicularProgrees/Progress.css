@@ -1,0 +1,47 @@
+.progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.progress .progress_header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.progress .summary {
+  display: flex;
+  width: 70%;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.progress .summary .summary_title {
+  margin-top: 1.5rem;
+}
+
+.progress .summary .summary_info {
+  color: var(--text-placeholder);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.progress button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--bg-item);
+  color: var(--text-color);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.progress button:hover {
+  transform: scale(1.1);
+  background-color: var(--text-placeholder);
+}

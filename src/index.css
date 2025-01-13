@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root,
+:root.dark {
+  transition: all 0.3s ease-in-out;
+}
+
+:root {
+  --bg-body: #eef5ff;
+  --bg-navigation: linear-gradient(to top, #eef5ff 0%, #fbfbfb 100%);
+  --bg-reverse: linear-gradient(to top, #fbfbfb 0%, #eef5ff 100%);
+  --bg-item: #c2d3f8;
+  --bg-row: #eef5ff;
+  --bg-navbar: #cddeff;
+  --text-color: #000;
+  --text-placeholder: #1679ab;
+  --text-card: #008170;
+  --text-grey: #808080;
+  --bg-svg: #4cc9fe;
+}
+
+:root .dark {
+  --bg-body: #1e293b;
+  --bg-navigation: linear-gradient(50deg, #05454d, #810511);
+  --bg-reverse: linear-gradient(50deg, #810511, #05454d);
+  --bg-item: rgba(0, 0, 0, 0.356);
+  --bg-navbar: rgba(0, 0, 0, 0.9);
+  --bg-row: #0b192c;
+  --text-color: #fff;
+  --text-placeholder: #135d66;
+  --text-card: #d63484;
+  --text-grey: #808080;
+  --bg-svg: #16c47f;
+}
+
+.App {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: var(--bg-body);
+  color: var(--text-color);
+  font-family: "roboto", sans-serif;
+}
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* =============== theme toggle style =============== */
+.moon {
+  display: block;
+  transition: all 0.3s ease;
+}
+.sun {
+  transition: all 0.3s ease;
+  display: none;
+}
+.dark .moon {
+  display: none;
+}
+.dark .sun {
+  display: block;
+}

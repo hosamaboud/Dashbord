@@ -59,6 +59,7 @@
   padding: 0 1rem;
 }
 
+
 /* =============== theme toggle style =============== */
 .moon {
   display: block;
@@ -73,4 +74,10 @@
 }
 .dark .sun {
   display: block;
+}
+
+@media screen and (max-width: 500px) {
+  .container{
+    padding: 0 0.5rem;
+  }
 }

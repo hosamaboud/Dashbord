@@ -337,6 +337,7 @@ const Content = () => {
           style={{
             width: "100%",
             height: 50,
+            zIndex: -1,
           }}
         >
           <path
@@ -366,6 +367,7 @@ const Content = () => {
           style={{
             width: "167%",
             height: 115,
+            zIndex: -1,
             transform: "rotate(90deg)",
           }}
         >
@@ -396,6 +398,7 @@ const Content = () => {
           style={{
             width: "100%",
             height: 50,
+            zIndex: -1,
             transform: "rotate(180deg)",
           }}
         >

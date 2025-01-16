@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../context/ThemeContext";
+import { DashboardContext } from "../../context/DashboardContext";
 import "./Main.css";
 import Header from "./HeaderTemplate/Header";
 import Content from "./Content/Content";
 const Main = () => {
-  const { darkTheme } = useContext(ThemeContext);
+  const { darkTheme } = useContext(DashboardContext);
   return (
     <div className={`main ${darkTheme && "dark"}`}>
       <Header />

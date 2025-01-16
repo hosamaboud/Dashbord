@@ -3,9 +3,9 @@ import CircularProgress from "@mui/joy/CircularProgress";
 import { useCountUp } from "use-count-up";
 import "./Progress.css";
 import { useContext } from "react";
-import { ThemeContext } from "../../../../context/ThemeContext";
+import { DashboardContext } from "../../../../context/DashboardContext";
 const Progress = ({ color_2, color_1, end, title, variant_1 }) => {
-  const { darkTheme } = useContext(ThemeContext);
+  const { isDarkTheme } = useContext(DashboardContext);
   const { value: value2, reset } = useCountUp({
     isCounting: true,
     duration: 1,
@@ -19,7 +19,7 @@ const Progress = ({ color_2, color_1, end, title, variant_1 }) => {
       <div className="progress_header">
         <CircularProgress
           size="lg"
-          {...(darkTheme ? { color: color_1 } : { color: color_2 })}
+          {...(isDarkTheme ? { color: color_1 } : { color: color_2 })}
           variant={variant_1}
           determinate
           value={numericValue}

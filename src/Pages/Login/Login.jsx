@@ -8,7 +8,7 @@ import img_6 from "../../assets/stars.png";
 import img_7 from "../../assets/white-outline.png";
 import bg_1 from "../../assets/1.jpg";
 import bg_2 from "../../assets/login.jpeg";
-import { ThemeContext } from "../../context/ThemeContext";
+import { DashboardContext } from "../../context/DashboardContext";
 import NavLogin from "../../Components/login/nav_login/NavLogin";
 import { useContext, useState } from "react";
 import { FaArrowRight, FaGooglePlusG, FaLock, FaRegUser } from "react-icons/fa";
@@ -17,6 +17,7 @@ import { IoLogoGithub, IoReloadCircleOutline } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
 import { IoIosEye } from "react-icons/io";
 import { auth } from "../../Firebase";
+import { updateProfile } from "firebase/auth";
 import {
   sendPasswordResetEmail,
   createUserWithEmailAndPassword,
@@ -24,7 +25,7 @@ import {
 } from "firebase/auth";
 
 const Login = () => {
-  const { darkTheme } = useContext(ThemeContext);
+  const { isDarkTheme } = useContext(DashboardContext);
   const [userName, setUserName] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
@@ -171,8 +172,6 @@ const Login = () => {
       default:
         errorMessage = `An unexpected error occurred: ${errorCode}. Please try again.`;
     }
-
-    // عرض الرسالة بشكل مناسب للمستخدم
     setError(errorMessage);
   };
 
@@ -200,11 +199,20 @@ const Login = () => {
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
-          setLoading(false);
-          setUserName(user.displayName);
 
-          localStorage.setItem("username", userName);
-          window.location.href = "/";
+          // Set the display name
+          updateProfile(user, {
+            displayName: userName,
+          })
+            .then(() => {
+              setLoading(false);
+              localStorage.setItem("username", userName);
+              window.location.href = "/";
+            })
+            .catch(() => {
+              setLoading(false);
+              setError("Failed to update profile. Please try again.");
+            });
         })
         .catch((error) => {
           setLoading(false);
@@ -217,7 +225,9 @@ const Login = () => {
           const user = userCredential.user;
           setLoading(false);
 
-          localStorage.setItem("username", user.displayName || user.email);
+          // Retrieve displayName
+          const userNameToStore = user.displayName || "User";
+          localStorage.setItem("username", userNameToStore);
           window.location.href = "/";
         })
         .catch((error) => {
@@ -240,7 +250,7 @@ const Login = () => {
     <div
       className="login "
       style={{
-        backgroundImage: `url(${darkTheme ? bg_2 : bg_1})`,
+        backgroundImage: `url(${isDarkTheme ? bg_2 : bg_1})`,
       }}
     >
       <NavLogin />

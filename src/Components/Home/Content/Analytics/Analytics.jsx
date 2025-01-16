@@ -11,7 +11,7 @@ import {
   XAxis,
 } from "recharts";
 import "./Analytics.css";
-import { ThemeContext } from "../../../../context/ThemeContext";
+import { DashboardContext } from "../../../../context/DashboardContext";
 import { useContext } from "react";
 
 const Analytics = ({
@@ -23,7 +23,7 @@ const Analytics = ({
   subtitle,
   value,
 }) => {
-  const { darkTheme } = useContext(ThemeContext);
+  const { darkTheme } = useContext(DashboardContext);
   const data00 = [
     {
       name: "Page A",

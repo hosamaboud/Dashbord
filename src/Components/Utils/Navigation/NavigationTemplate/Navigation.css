@@ -45,6 +45,17 @@
   background: var(--text-placeholder);
 }
 
+.navigation .login_btn {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--login-nav);
+  color: var(--text-color);
+  border-radius: 50%;
+  font-size: 1.4rem;
+  aspect-ratio: 1;
+}
 .menu_icon {
   transition: transform 0.3s ease;
 }
@@ -124,13 +135,11 @@
 
 /* =============== navigation style for responsive start ================ */
 
-
-
 @media screen and (max-width: 500px) {
-  .navigation{
+  .navigation {
     width: 5rem;
   }
-.navigation header .profile {
-  height: 30px;
-}
+  .navigation header .profile {
+    height: 30px;
+  }
 }

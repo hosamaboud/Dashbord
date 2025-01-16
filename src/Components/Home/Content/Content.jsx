@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../../context/ThemeContext";
+import { DashboardContext } from "../../../context/DashboardContext";
 import "./Content.css";
 import { FiSettings } from "react-icons/fi";
 import {
@@ -31,9 +31,9 @@ import {
 import { GiSettingsKnobs } from "react-icons/gi";
 import Progress from "./CicularProgrees/Progress";
 const Content = () => {
-  const { darkTheme } = useContext(ThemeContext);
+  const { isDarkTheme } = useContext(DashboardContext);
   return (
-    <div className={` content ${darkTheme && "dark"}`}>
+    <div className={` content ${isDarkTheme && "dark"}`}>
       <div className="row header">
         <FiSettings className="Cog" />
         <h1 className="title">Current Notification</h1>
@@ -46,7 +46,7 @@ const Content = () => {
           <RiChat1Line className="icon" />
         </div>
         <svg
-          className={`bg_wave ${darkTheme && "dark"}`}
+          className={`bg_wave ${isDarkTheme && "dark"}`}
           preserveAspectRatio="none"
           viewBox="0 0 1200 120"
           xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +68,7 @@ const Content = () => {
       </div>
       <div className="row header">
         <svg
-          className={`bg_wave_reverse ${darkTheme && "dark"}`}
+          className={`bg_wave_reverse ${isDarkTheme && "dark"}`}
           preserveAspectRatio="none"
           viewBox="0 0 1200 120"
           xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +95,7 @@ const Content = () => {
       </div>
       <span className="section_title">
         <svg
-          className={`bg_triangle ${darkTheme ? "dark" : "light"}`}
+          className={`bg_triangle ${isDarkTheme ? "dark" : "light"}`}
           preserveAspectRatio="none"
           viewBox="0 0 1200 120"
           xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +106,7 @@ const Content = () => {
       </span>
       <div className="row square">
         <svg
-          className={`bg_wave_reverse ${darkTheme && "dark"}`}
+          className={`bg_wave_reverse ${isDarkTheme && "dark"}`}
           preserveAspectRatio="none"
           viewBox="0 0 1200 120"
           xmlns="http://www.w3.org/2000/svg"
@@ -131,7 +131,7 @@ const Content = () => {
       </div>
       <div className="row square">
         <svg
-          className={`bg_wave_reverse ${darkTheme && "dark"}`}
+          className={`bg_wave_reverse ${isDarkTheme && "dark"}`}
           preserveAspectRatio="none"
           viewBox="0 0 1200 120"
           xmlns="http://www.w3.org/2000/svg"
@@ -156,7 +156,7 @@ const Content = () => {
       </div>
       <div className="row square">
         <svg
-          className={`bg_wave_reverse ${darkTheme && "dark"}`}
+          className={`bg_wave_reverse ${isDarkTheme && "dark"}`}
           preserveAspectRatio="none"
           viewBox="0 0 1200 120"
           xmlns="http://www.w3.org/2000/svg"
@@ -181,7 +181,7 @@ const Content = () => {
       </div>
       <div className="row square">
         <svg
-          className={`bg_wave_reverse ${darkTheme && "dark"}`}
+          className={`bg_wave_reverse ${isDarkTheme && "dark"}`}
           preserveAspectRatio="none"
           viewBox="0 0 1200 120"
           xmlns="http://www.w3.org/2000/svg"
@@ -222,7 +222,7 @@ const Content = () => {
       </span>
       <div className="row tall_square">
         <svg
-          className={`bg_wave_reverse ${darkTheme && "dark"}`}
+          className={`bg_wave_reverse ${isDarkTheme && "dark"}`}
           preserveAspectRatio="none"
           viewBox="0 0 1200 120"
           xmlns="http://www.w3.org/2000/svg"
@@ -270,7 +270,7 @@ const Content = () => {
       </div>
       <div className="row tall_square bg_reverse">
         <svg
-          className={`bg_wave_reverse ${darkTheme && "dark"}`}
+          className={`bg_wave_reverse ${isDarkTheme && "dark"}`}
           preserveAspectRatio="none"
           viewBox="0 0 1200 120"
           xmlns="http://www.w3.org/2000/svg"
@@ -330,14 +330,14 @@ const Content = () => {
 
       <div className="row side_react">
         <svg
-          className={`bg_wave side ${darkTheme && "dark"}`}
+          className={`bg_wave side ${isDarkTheme && "dark"}`}
           preserveAspectRatio="none"
           viewBox="0 0 1200 120"
           xmlns="http://www.w3.org/2000/svg"
           style={{
             width: "100%",
             height: 50,
-            zIndex: -1,
+            zIndex: 1,
           }}
         >
           <path
@@ -360,14 +360,14 @@ const Content = () => {
       </div>
       <div className="row side_react">
         <svg
-          className={`bg_wave ${darkTheme && "dark"}`}
+          className={`bg_wave ${isDarkTheme && "dark"}`}
           preserveAspectRatio="none"
           viewBox="0 0 1200 120"
           xmlns="http://www.w3.org/2000/svg"
           style={{
             width: "167%",
             height: 115,
-            zIndex: -1,
+            zIndex: 1,
             transform: "rotate(90deg)",
           }}
         >
@@ -391,14 +391,14 @@ const Content = () => {
       </div>
       <div className="row side_react">
         <svg
-          className={`bg_wave_reverse ${darkTheme && "dark"}`}
+          className={`bg_wave_reverse ${isDarkTheme && "dark"}`}
           preserveAspectRatio="none"
           viewBox="0 0 1200 120"
           xmlns="http://www.w3.org/2000/svg"
           style={{
             width: "100%",
             height: 50,
-            zIndex: -1,
+            zIndex: 1,
             transform: "rotate(180deg)",
           }}
         >

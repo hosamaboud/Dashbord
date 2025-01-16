@@ -1,24 +1,24 @@
-import { useState } from "react";
-import { ThemeContext } from "./context/ThemeContext";
+import { useContext } from "react";
+import { DashboardContext } from "./context/DashboardContext";
 import { Route, Routes, useLocation } from "react-router";
-import Home from "./Pages/Home";
+import Home from "./Pages/Home/Home";
 import Navigation from "./Components/Utils/Navigation/NavigationTemplate/Navigation";
 import Login from "./Pages/Login/Login";
+import Profile from "./Pages/Profile/Profile";
 
 function App() {
-  const [darkTheme, setDarkTheme] = useState(true);
+  const { isDarkTheme } = useContext(DashboardContext);
   const location = useLocation();
 
   return (
-    <ThemeContext.Provider value={{ darkTheme, setDarkTheme }}>
-      <div className={`App ${darkTheme ? "dark" : ""}`}>
-        {location.pathname !== "/login" && <Navigation />}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </div>
-    </ThemeContext.Provider>
+    <div className={`App ${isDarkTheme ? "dark" : ""}`}>
+      {location.pathname !== "/login" && <Navigation />}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
+    </div>
   );
 }
 

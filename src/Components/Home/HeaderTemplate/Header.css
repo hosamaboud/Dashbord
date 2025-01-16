@@ -69,6 +69,20 @@
   background-color: var(--text-placeholder);
 }
 
+.tools .login_btn {
+  color: var(--text-color);
+  text-decoration: none;
+  background: var(--login-hover);
+  padding: 8px 16px;
+  border-radius: 3rem;
+  transition: all 0.3s ease;
+}
+
+.tools .login_btn:hover {
+  transform: translateY(-2px);
+  background: var(--login-nav);
+}
+
 .tools .user {
   position: relative;
   height: 30px;

@@ -1,7 +1,6 @@
 import { TbDashboard, TbFileUpload } from "react-icons/tb";
 import Nav from "../NavIconTemplate/Nav";
 import "./Navigation.css";
-import { signOut } from "firebase/auth";
 import { VscGraphLine } from "react-icons/vsc";
 import { FiChevronRight, FiMessageSquare, FiSun } from "react-icons/fi";
 import {
@@ -14,30 +13,21 @@ import { RiAccountCircleLine } from "react-icons/ri";
 import { BiDotsHorizontalRounded, BiMessageAltAdd } from "react-icons/bi";
 import { useContext, useState } from "react";
 import { IoMdClose } from "react-icons/io";
-import { ThemeContext } from "../../../../context/ThemeContext";
+import { DashboardContext } from "../../../../context/DashboardContext";
 import { HiOutlineMoon } from "react-icons/hi";
 import { Link } from "react-router";
-import { auth } from "../../../../Firebase";
+import { FaUserPlus } from "react-icons/fa";
 
 const Navigation = () => {
-  const { darkTheme, setDarkTheme } = useContext(ThemeContext);
+  const { isDarkTheme, setIsDarkTheme, isUserLoggedIn, handleLogout } =
+    useContext(DashboardContext);
   const [nav, setNav] = useState(false);
   const [open, setOpen] = useState(false);
-  const handleLogout = () => {
-    signOut(auth)
-      .then(() => {
-        localStorage.removeItem("username");
-        window.location.href = "/login";
-      })
-      .catch((error) => {
-        console.error("Error logging out:", error);
-      });
-  };
 
   return (
     <div
       className={`container ${nav ? "navigation open_nav " : " navigation "} ${
-        darkTheme && "dark"
+        isDarkTheme && "dark"
       } `}
     >
       <div
@@ -55,17 +45,26 @@ const Navigation = () => {
       </div>
       <header>
         <div className="profile">
-          <Link to="/">
-            <img
-              loading="lazy"
-              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=580&q=80"
-              alt="user img"
-            />
-          </Link>
+          {isUserLoggedIn ? (
+            <Link to="/profile">
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=580&q=80"
+                alt="user img"
+              />
+            </Link>
+          ) : (
+            <Link to="/login" className="login_btn">
+              <FaUserPlus />
+            </Link>
+          )}
         </div>
-        <span className="name">Hi, Admin</span>
+        {isUserLoggedIn ? (
+          <span className="name">Hi, {localStorage.getItem("username")}</span>
+        ) : (
+          <span className="name">Hi, Guest</span>
+        )}
       </header>
-
       <Nav Icon={TbDashboard} title="Dashboard" />
       <Nav Icon={VscGraphLine} title="Analytics" />
       <Nav Icon={FiMessageSquare} title="Messages" />
@@ -83,9 +82,9 @@ const Navigation = () => {
       />
       <div className="divider"></div>
       <Nav
-        Icon={darkTheme ? FiSun : HiOutlineMoon}
-        onClick={() => setDarkTheme(!darkTheme)}
-        title={darkTheme ? "Switch to Light Mode" : " Switch to Dark Mode"}
+        Icon={isDarkTheme ? FiSun : HiOutlineMoon}
+        onClick={() => setIsDarkTheme(!isDarkTheme)}
+        title={isDarkTheme ? "Switch to Light Mode" : " Switch to Dark Mode"}
       />
       <Nav Icon={BiDotsHorizontalRounded} title="More Details" />
       <svg
@@ -94,7 +93,7 @@ const Navigation = () => {
         viewBox="0 0 1200 120"
         xmlns="http://www.w3.org/2000/svg"
         style={{
-          fill: darkTheme ? "#ffffff" : "#4CC9FE",
+          fill: isDarkTheme ? "#ffffff" : "#4CC9FE",
           width: "287%",
           height: 245,
         }}

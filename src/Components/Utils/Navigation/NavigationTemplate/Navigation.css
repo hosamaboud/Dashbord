@@ -124,11 +124,13 @@
 
 /* =============== navigation style for responsive start ================ */
 
+
+
 @media screen and (max-width: 500px) {
-  .navigation {
+  .navigation{
     width: 5rem;
   }
-  .navigation header .profile {
-    height: 30px;
-  }
+.navigation header .profile {
+  height: 30px;
+}
 }

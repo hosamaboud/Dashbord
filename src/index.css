@@ -2,7 +2,6 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
-@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 * {
   box-sizing: border-box;
   margin: 0;
@@ -26,6 +25,10 @@
   --text-card: #008170;
   --text-grey: #808080;
   --bg-svg: #4cc9fe;
+  --login-nav: linear-gradient(102deg, #3fa2f6, #6ad4dd);
+  --login-bg: rgba(105, 300, 255, 0.3);
+  --login-hover: rgba(5, 5, 255, 0.1);
+  --login-icon: #000;
 }
 
 :root .dark {
@@ -40,6 +43,10 @@
   --text-card: #d63484;
   --text-grey: #808080;
   --bg-svg: #16c47f;
+  --login-nav: linear-gradient(105deg, #003285, #6d67e4);
+  --login-bg: rgba(5, 5, 255, 0.1);
+  --login-icon: #ca4e79;
+  --login-hover: rgba(105, 300, 255, 0.3);
 }
 
 .App {
@@ -59,7 +66,6 @@
   padding: 0 1rem;
 }
 
-
 /* =============== theme toggle style =============== */
 .moon {
   display: block;
@@ -77,7 +83,7 @@
 }
 /* responsive */
 @media screen and (max-width: 500px) {
-  .container{
-    padding:0;
+  .container {
+    padding: 0;
   }
 }

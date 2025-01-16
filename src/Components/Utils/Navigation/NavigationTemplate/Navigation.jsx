@@ -1,7 +1,7 @@
 import { TbDashboard, TbFileUpload } from "react-icons/tb";
 import Nav from "../NavIconTemplate/Nav";
 import "./Navigation.css";
-
+import { signOut } from "firebase/auth";
 import { VscGraphLine } from "react-icons/vsc";
 import { FiChevronRight, FiMessageSquare, FiSun } from "react-icons/fi";
 import {
@@ -14,13 +14,26 @@ import { RiAccountCircleLine } from "react-icons/ri";
 import { BiDotsHorizontalRounded, BiMessageAltAdd } from "react-icons/bi";
 import { useContext, useState } from "react";
 import { IoMdClose } from "react-icons/io";
-import { ThemeContext } from "../../context/ThemeContext";
+import { ThemeContext } from "../../../../context/ThemeContext";
 import { HiOutlineMoon } from "react-icons/hi";
+import { Link } from "react-router";
+import { auth } from "../../../../Firebase";
 
 const Navigation = () => {
   const { darkTheme, setDarkTheme } = useContext(ThemeContext);
   const [nav, setNav] = useState(false);
   const [open, setOpen] = useState(false);
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        localStorage.removeItem("username");
+        window.location.href = "/login";
+      })
+      .catch((error) => {
+        console.error("Error logging out:", error);
+      });
+  };
+
   return (
     <div
       className={`container ${nav ? "navigation open_nav " : " navigation "} ${
@@ -42,11 +55,13 @@ const Navigation = () => {
       </div>
       <header>
         <div className="profile">
-          <img
-            loading="lazy"
-            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=580&q=80"
-            alt="user img"
-          />
+          <Link to="/">
+            <img
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=580&q=80"
+              alt="user img"
+            />
+          </Link>
         </div>
         <span className="name">Hi, Admin</span>
       </header>
@@ -61,7 +76,11 @@ const Navigation = () => {
       <Nav Icon={AiOutlineDollarCircle} title="Earnings" />
       <Nav Icon={TbFileUpload} title="Posts" />
       <Nav Icon={BiMessageAltAdd} title="Message Requests" />
-      <Nav Icon={AiOutlineUserSwitch} title="Change Account" />
+      <Nav
+        Icon={AiOutlineUserSwitch}
+        onClick={handleLogout}
+        title="Change Account"
+      />
       <div className="divider"></div>
       <Nav
         Icon={darkTheme ? FiSun : HiOutlineMoon}

@@ -8,8 +8,21 @@ import { RiSettingsLine } from "react-icons/ri";
 import { ThemeContext } from "../../../context/ThemeContext";
 import { useContext } from "react";
 import { FiSun } from "react-icons/fi";
+import { Link } from "react-router";
+import { signOut } from "firebase/auth";
+import { auth } from "../../../Firebase";
 const Header = () => {
   const { darkTheme, setDarkTheme } = useContext(ThemeContext);
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        localStorage.removeItem("username");
+        window.location.href = "/login";
+      })
+      .catch((error) => {
+        console.error("Error logging out:", error);
+      });
+  };
   return (
     <header className={`Header_container ${darkTheme && "dark"}`}>
       <form className="search_bar">
@@ -27,15 +40,15 @@ const Header = () => {
           className="icon moon"
         />
         <RiSettingsLine className="icon" />
-        <HiOutlineLogin className="icon" />
+        <HiOutlineLogin onClick={handleLogout} className="icon" />
         <div className="divider"></div>
-        <div className="user">
+        <Link to="/login" className="user">
           <img
             loading="lazy"
             src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=580&q=80"
             alt=" user "
           />
-        </div>
+        </Link>
       </div>
     </header>
   );

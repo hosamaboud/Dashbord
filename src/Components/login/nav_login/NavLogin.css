@@ -1,0 +1,62 @@
+.login_logo .icon,
+.login_nav #dark_theme .icon {
+  font-size: 1.5rem;
+  transition: all 0.4s ease;
+}
+.login_logo:hover .icon {
+  transition: all 0.4s ease;
+  transform: translateX(-3px);
+}
+
+.login_logo,
+.login_nav #dark_theme {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  color: var(--text-color);
+  border-radius: 0 0 10px 10px;
+  transition: all 0.4s ease;
+  background: var(--login-nav);
+}
+
+.login_logo {
+  left: 4rem;
+  text-decoration: none;
+}
+
+.login_nav #dark_theme {
+  left: 10rem;
+  cursor: pointer;
+}
+
+.login_nav #dark_theme:hover .icon {
+  transform: rotate(20deg);
+}
+
+/* ===== responsive ===== */
+@media screen and (max-width: 1124px) {
+  .login_nav #dark_theme,
+  .login_logo {
+    height: 40px;
+    width: 40px;
+  }
+  .login_nav #dark_theme .icon,
+  .login_nav .icon {
+    font-size: 1.2rem;
+  }
+
+  .login_logo {
+    left: 3rem;
+  }
+  .login_nav #dark_theme {
+    left: 7rem;
+  }
+}
+
+@media screen and (max-width: 892px) {
+
+}

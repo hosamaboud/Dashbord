@@ -219,7 +219,6 @@ const Login = () => {
 
           localStorage.setItem("username", user.displayName || user.email);
           window.location.href = "/";
-          
         })
         .catch((error) => {
           setLoading(false);

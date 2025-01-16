@@ -1,3 +1,4 @@
+import "./Log.css";
 import img_1 from "../../assets/cloud.png";
 import img_2 from "../../assets/coin.png";
 import img_3 from "../../assets/dots.png";
@@ -5,7 +6,6 @@ import img_4 from "../../assets/spring.png";
 import img_5 from "../../assets/rocket.png";
 import img_6 from "../../assets/stars.png";
 import img_7 from "../../assets/white-outline.png";
-import "./Login.css";
 import bg_1 from "../../assets/1.jpg";
 import bg_2 from "../../assets/login.jpeg";
 import { ThemeContext } from "../../context/ThemeContext";
